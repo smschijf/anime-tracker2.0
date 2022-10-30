@@ -63,10 +63,18 @@ h3 {
     font-size: 1.75rem;
 }
 
+.explore-search {
+    margin: 0 15px 40px 0;
+}
+
 .search-icon svg {
     fill: #999;
 }
 
-.search-bar {
+.explore-search-bar {
     display: flex;
+}
+
+.explore-row h6 {
+    font-size: 1em;
 }
