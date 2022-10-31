@@ -7,8 +7,11 @@ const App = () => {
     <div id="container">
       <Nav />
       <div className="content-container">
-        <SearchBar />
-        <ExploreRow />
+        <div className="explore-content">
+          <SearchBar />
+          <ExploreRow />
+        </div>
+        <div className="explore-sidebar"></div>
       </div>
     </div>
   );
