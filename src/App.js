@@ -1,6 +1,7 @@
 import Nav from "./components/Nav";
 import SearchBar from "./components/SearchBar";
 import ExploreRow from "./components/ExploreRow";
+import SideBar from "./components/SideBar";
 
 const App = () => {
   return (
@@ -11,7 +12,9 @@ const App = () => {
           <SearchBar />
           <ExploreRow />
         </div>
-        <div className="explore-sidebar"></div>
+        <div className="explore-sidebar">
+            <SideBar />
+        </div>
       </div>
     </div>
   );

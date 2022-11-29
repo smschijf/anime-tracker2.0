@@ -22,7 +22,7 @@ const ExploreRow = () => {
   };
 
   const GetPopularAnime = async () => {
-    const temp = await fetch(`https://api.jikan.moe/v4/top/anime`).then((res) =>
+    const temp = await fetch(`https://api.jikan.moe/v4/top/anime?filter=bypopularity`).then((res) =>
       res.json()
     );
 

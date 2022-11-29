@@ -118,3 +118,13 @@ h3 {
     text-decoration: none;
     color: #f75239;
 }
+
+.explore-sidebar {
+    padding: 20px;
+}
+
+.explore-sidebar h5 {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0 0 10px 0;
+}
