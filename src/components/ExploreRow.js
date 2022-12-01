@@ -6,25 +6,28 @@ const ExploreRow = () => {
   const [popularAnime, SetPopularAnime] = useState([]);
 
   const GetUpcomingAnime = async () => {
-    const temp = await fetch(
-      `https://api.jikan.moe/v4/top/anime?filter=upcoming`
-    ).then((res) => res.json());
+    const temp = await fetch(`../data/anime_upcoming.json`).then((res) => {
+      let data = res.json();
+      return data;
+    });
 
     SetUpcomingAnime(temp.data.slice(0, 5));
   };
 
   const GetAiringAnime = async () => {
-    const temp = await fetch(
-      `https://api.jikan.moe/v4/top/anime?filter=airing`
-    ).then((res) => res.json());
+    const temp = await fetch(`../data/anime_upcoming.json`).then((res) => {
+      let data = res.json();
+      return data;
+    });
 
     SetAiringAnime(temp.data.slice(0, 5));
   };
 
   const GetPopularAnime = async () => {
-    const temp = await fetch(`https://api.jikan.moe/v4/top/anime?filter=bypopularity`).then((res) =>
-      res.json()
-    );
+    const temp = await fetch(`../data/anime_upcoming.json`).then((res) => {
+      let data = res.json();
+      return data;
+    });
 
     SetPopularAnime(temp.data.slice(0, 5));
   };
@@ -38,12 +41,15 @@ const ExploreRow = () => {
   return (
     <>
       <div className="explore-row">
-        <h6>Top Upcoming Anime</h6>
+        <h6>Upcoming Anime</h6>
         <div className="explore-row-media">
           {upcomingAnime.map((anime) => (
-            <div className="explore-row-item" key={anime.mal_id}>
-              <a href={anime.url} target="_blank" rel="noreferrer">
-                <img src={anime.images.jpg.image_url} alt={anime.title}></img>
+            <div className="explore-row-item" key={anime.id}>
+              <a href={anime.links.self} target="_blank" rel="noreferrer">
+                <img
+                  src={anime.attributes.posterImage.small}
+                  alt={anime.attributes.canonicalTitle}
+                ></img>
               </a>
             </div>
           ))}
@@ -57,9 +63,12 @@ const ExploreRow = () => {
         <h6>Top Airing Anime</h6>
         <div className="explore-row-media">
           {airingAnime.map((anime) => (
-            <div className="explore-row-item" key={anime.mal_id}>
-              <a href={anime.url} target="_blank" rel="noreferrer">
-                <img src={anime.images.jpg.image_url} alt={anime.title}></img>
+            <div className="explore-row-item" key={anime.id}>
+              <a href={anime.links.self} target="_blank" rel="noreferrer">
+                <img
+                  src={anime.attributes.posterImage.small}
+                  alt={anime.attributes.canonicalTitle}
+                ></img>
               </a>
             </div>
           ))}
@@ -73,9 +82,12 @@ const ExploreRow = () => {
         <h6>Most Popular Anime</h6>
         <div className="explore-row-media">
           {popularAnime.map((anime) => (
-            <div className="explore-row-item" key={anime.mal_id}>
-              <a href={anime.url} target="_blank" rel="noreferrer">
-                <img src={anime.images.jpg.image_url} alt={anime.title}></img>
+            <div className="explore-row-item" key={anime.id}>
+              <a href={anime.links.self} target="_blank" rel="noreferrer">
+                <img
+                  src={anime.attributes.posterImage.small}
+                  alt={anime.attributes.canonicalTitle}
+                ></img>
               </a>
             </div>
           ))}

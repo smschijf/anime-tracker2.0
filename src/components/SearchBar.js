@@ -1,4 +1,19 @@
+import { useEffect, useState } from "react";
+import SearchResults from "./SearchResults";
+
 const SearchBar = () => {
+  const [search, setSearch] = useState("");
+  const [animeData, setAnimeData] = useState();
+
+  const getData = async()=>{
+    const res = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${search}`)
+    const resData = await res.json();
+    setAnimeData(resData.data.slice(0, 8))
+  }
+  useEffect(()=> {
+    getData()
+  },[search])
+
   return (
     <div className="explore-search">
       <h3>Explore Anime</h3>
@@ -9,11 +24,14 @@ const SearchBar = () => {
           </svg>
         </span>
         <form>
-          <input type="search" placeholder="What are you searching for?" />
+          <input type="search" placeholder="What are you searching for?" onChange={(e) => setSearch(e.target.value)}/>
         </form>
       </div>
       <div className="explore-search-info">
         Or, browse with <a href="./">filters</a>
+      </div>
+      <div className="search-results">
+      <SearchResults searchResults={animeData}/>
       </div>
     </div>
   );
